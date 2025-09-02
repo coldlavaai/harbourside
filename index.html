@@ -584,6 +584,25 @@
         <!-- VAPI Widget JavaScript -->
         <script src="https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js"></script>
         <script>
+          /*
+          🔑 VAPI API CONFIGURATION QUICK REFERENCE:
+          ==========================================
+          
+          FOR VOICE CALLS (VAPI SDK):
+          - Use PUBLIC KEY in vapiSDK.run() apiKey parameter
+          - Use ASSISTANT ID in vapiSDK.run() assistant parameter
+          - Use ASSISTANT ID in vapiInstance.start() parameter
+          
+          FOR TEXT CHAT (REST API):  
+          - Use PRIVATE KEY in Authorization Bearer header
+          - Use ASSISTANT ID in request body assistantId field
+          
+          CURRENT JESSICA DEMO KEYS:
+          - Public Key:  b3f38fb7-8541-4e3e-8708-5d49c3f54f00
+          - Private Key: bb0b198b-1a8f-4675-bdf8-8a865fc5d68a
+          - Assistant:   59c42235-dcd1-4160-a034-1e6691c456aa
+          */
+          
           document.addEventListener('DOMContentLoaded', function() {
             // Widget state
             let previousChatId = null;
@@ -620,9 +639,17 @@
                   console.log('Initializing VAPI voice...');
                   console.log('Public key:', 'b3f38fb7-8541-4e3e-8708-5d49c3f54f00');
                   console.log('Assistant ID:', '59c42235-dcd1-4160-a034-1e6691c456aa');
+                  
+                  // 🔑 VAPI API KEY CONFIGURATION:
+                  // apiKey = PUBLIC KEY (used for VAPI SDK initialization)
+                  // Authorization header = PRIVATE KEY (used for text chat API calls)
+                  // Current keys for Jessica demo:
+                  // - Public key: b3f38fb7-8541-4e3e-8708-5d49c3f54f00
+                  // - Private key: bb0b198b-1a8f-4675-bdf8-8a865fc5d68a  
+                  // - Assistant ID: 59c42235-dcd1-4160-a034-1e6691c456aa
                   vapiInstance = window.vapiSDK.run({
-                    apiKey: 'b3f38fb7-8541-4e3e-8708-5d49c3f54f00',
-                    assistant: '59c42235-dcd1-4160-a034-1e6691c456aa'
+                    apiKey: 'b3f38fb7-8541-4e3e-8708-5d49c3f54f00', // 👈 PUBLIC KEY HERE
+                    assistant: '59c42235-dcd1-4160-a034-1e6691c456aa'  // 👈 ASSISTANT ID HERE
                   });
 
                   // Set up voice event listeners
@@ -784,6 +811,7 @@
                 elements.voiceButton.className = 'connecting';
                 elements.voiceButton.textContent = 'Connecting...';
                 elements.voiceStatus.textContent = 'Starting voice call...';
+                // 👈 ASSISTANT ID used here too (same as above)
                 vapiInstance.start('59c42235-dcd1-4160-a034-1e6691c456aa');
               } catch (error) {
                 console.error('Failed to start voice call:', error);
@@ -826,14 +854,16 @@
               const typingIndicator = addTypingIndicator();
 
               try {
+                // 🔑 TEXT CHAT API CONFIGURATION:
+                // Authorization header uses PRIVATE KEY for text chat API calls
                 const response = await fetch('https://api.vapi.ai/chat', {
                   method: 'POST',
                   headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer bb0b198b-1a8f-4675-bdf8-8a865fc5d68a'
+                    'Authorization': 'Bearer bb0b198b-1a8f-4675-bdf8-8a865fc5d68a' // 👈 PRIVATE KEY HERE
                   },
                   body: JSON.stringify({
-                    assistantId: '59c42235-dcd1-4160-a034-1e6691c456aa',
+                    assistantId: '59c42235-dcd1-4160-a034-1e6691c456aa', // 👈 ASSISTANT ID HERE
                     input: message,
                     previousChatId: previousChatId
                   })
