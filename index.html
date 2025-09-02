@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Talk to Sophie | Cold Lava</title>
+  <title>Talk to Jessica | Cold Lava</title>
   <!-- Updated for GitHub Pages deployment -->
   <style>
     body {
@@ -87,7 +87,7 @@
   <img src="https://cdn.shopify.com/s/files/1/0951/6141/8067/files/LAVA_1.png?v=1753207208" alt="Cold Lava Logo" class="logo" />
 
   <div class="sophie-container">
-    <img src="https://cdn.shopify.com/s/files/1/0951/6141/8067/files/ChatGPT_Image_Aug_31_2025_09_02_37_PM_1.png?v=1756670610" alt="Sophie" class="sophie-image" />
+    <img src="https://cdn.shopify.com/s/files/1/0951/6141/8067/files/ChatGPT_Image_Aug_31_2025_09_02_37_PM_1.png?v=1756670610" alt="Jessica" class="sophie-image" />
     <div class="hover-banner">Tap the widget to text or voice chat with me...</div>
   </div>
 
@@ -528,27 +528,27 @@
           
           <!-- Chat Button -->
           <button id="vapi-chat-button" aria-label="Open chat">
-            <img src="https://cdn.shopify.com/s/files/1/0951/6141/8067/files/ChatGPT_Image_Aug_31_2025_09_02_37_PM_1.png?v=1756670610" alt="Sophie" style="width: 50px; height: 80px; border-radius: 25px; object-fit: cover;" />
+            <img src="https://cdn.shopify.com/s/files/1/0951/6141/8067/files/ChatGPT_Image_Aug_31_2025_09_02_37_PM_1.png?v=1756670610" alt="Jessica" style="width: 50px; height: 80px; border-radius: 25px; object-fit: cover;" />
           </button>
 
           <!-- Chat Panel -->
           <div id="vapi-chat-panel" role="dialog" aria-labelledby="vapi-chat-title" class="vapi-text-mode">
             <!-- Header -->
             <div id="vapi-chat-header">
-              <h3 id="vapi-chat-title">Ask Sophie?</h3>
+              <h3 id="vapi-chat-title">Ask Jessica?</h3>
               <button id="vapi-close-button" aria-label="Close chat">×</button>
             </div>
 
             <!-- Messages - Separate containers for text and voice -->
             <div id="vapi-text-messages" role="log" aria-live="polite" aria-label="Text chat messages">
               <div class="vapi-message vapi-message-assistant">
-                Welcome to Solar Sales UK, my name is Sophie.. How can I help?
+                Welcome to Solar Sales UK, my name is Jessica.. How can I help?
               </div>
             </div>
 
             <div id="vapi-voice-messages" role="log" aria-live="polite" aria-label="Voice chat messages">
               <div class="vapi-voice-message vapi-voice-message-system">
-                🎤 Talk to Sophie...
+                🎤 Talk to Jessica...
               </div>
             </div>
 
@@ -619,8 +619,8 @@
                 if (window.vapiSDK) {
                   console.log('Initializing VAPI voice...');
                   vapiInstance = window.vapiSDK.run({
-                    apiKey: '9bf2cd14-2fd3-4f5c-9fd8-34a8ad7437a9',
-                    assistant: '5e0e1c91-0050-4e2a-8fd0-6db7945c7db1'
+                    apiKey: 'bb0b198b-1a8f-4675-bdf8-8a865fc5d68a',
+                    assistant: '59c42235-dcd1-4160-a034-1e6691c456aa'
                   });
 
                   // Set up voice event listeners
@@ -689,7 +689,7 @@
                   elements.voiceStatus.textContent = 'Listening to you...';
                   elements.voiceButton.classList.add('listening');
                 } else if (message.role === 'assistant' && message.status === 'started') {
-                  elements.voiceStatus.textContent = 'Sophie is speaking...';
+                  elements.voiceStatus.textContent = 'Jessica is speaking...';
                   elements.voiceButton.classList.remove('listening');
                 } else if (message.status === 'stopped') {
                   elements.voiceStatus.textContent = 'Ready - speak now or click to end';
@@ -778,7 +778,7 @@
                 elements.voiceButton.className = 'connecting';
                 elements.voiceButton.textContent = 'Connecting...';
                 elements.voiceStatus.textContent = 'Starting voice call...';
-                vapiInstance.start('5e0e1c91-0050-4e2a-8fd0-6db7945c7db1');
+                vapiInstance.start('59c42235-dcd1-4160-a034-1e6691c456aa');
               } catch (error) {
                 console.error('Failed to start voice call:', error);
                 addVoiceMessage('system', 'Failed to start voice call: ' + error.message);
@@ -824,10 +824,10 @@
                   method: 'POST',
                   headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer c624aff0-d3ee-479c-9fb0-90587455964f'
+                    'Authorization': 'Bearer b3f38fb7-8541-4e3e-8708-5d49c3f54f00'
                   },
                   body: JSON.stringify({
-                    assistantId: '5e0e1c91-0050-4e2a-8fd0-6db7945c7db1',
+                    assistantId: '59c42235-dcd1-4160-a034-1e6691c456aa',
                     input: message,
                     previousChatId: previousChatId
                   })
@@ -909,7 +909,7 @@
                   <span style="animation: fade 1.4s ease-in-out infinite; animation-delay: 0s;">•</span>
                   <span style="animation: fade 1.4s ease-in-out infinite; animation-delay: 0.2s;">•</span>
                   <span style="animation: fade 1.4s ease-in-out infinite; animation-delay: 0.4s;">•</span>
-                  <span style="margin-left: 8px;">Sophie is typing...</span>
+                  <span style="margin-left: 8px;">Jessica is typing...</span>
                 </div>
                 <style>
                   @keyframes fade {
