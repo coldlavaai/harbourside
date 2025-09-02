@@ -129,21 +129,24 @@
 
           #vapi-speech-bubble {
             position: absolute !important;
-            bottom: 65px !important;
-            right: 80px !important;
-            background: white !important;
-            color: #374151 !important;
-            padding: 8px 12px !important;
-            border-radius: 18px !important;
-            font-size: 12px !important;
-            font-weight: 500 !important;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+            bottom: 75px !important;
+            right: 90px !important;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.95)) !important;
+            color: #1e293b !important;
+            padding: 12px 16px !important;
+            border-radius: 20px !important;
+            font-size: 13px !important;
+            font-weight: 600 !important;
+            box-shadow: 
+              0 8px 32px rgba(0, 0, 0, 0.12),
+              0 4px 16px rgba(0, 0, 0, 0.08),
+              0 0 0 1px rgba(255, 255, 255, 0.8) !important;
             white-space: nowrap !important;
-            border: 1px solid #e5e7eb !important;
             opacity: 0 !important;
-            transform: translateY(10px) !important;
-            transition: all 0.3s ease !important;
+            transform: translateY(15px) scale(0.9) !important;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
             pointer-events: none !important;
+            backdrop-filter: blur(12px) !important;
           }
 
           #vapi-speech-bubble::after {
@@ -161,72 +164,128 @@
 
           #vapi-hybrid-widget:hover #vapi-speech-bubble {
             opacity: 1 !important;
-            transform: translateY(0) !important;
+            transform: translateY(0) scale(1) !important;
           }
 
           #vapi-chat-button {
-            width: 60px !important;
-            height: 90px !important;
-            border-radius: 30px !important;
-            background: #1b3c6b !important;
-            border: none !important;
+            width: 70px !important;
+            height: 100px !important;
+            border-radius: 35px !important;
+            background: linear-gradient(145deg, #1b3c6b, #2a4d7c) !important;
+            border: 2px solid rgba(255, 255, 255, 0.2) !important;
             color: #1b3c6b !important;
             font-size: 24px !important;
             cursor: pointer !important;
-            box-shadow: 0 4px 12px rgba(27, 60, 107, 0.3) !important;
-            transition: all 0.3s ease !important;
+            box-shadow: 
+              0 8px 32px rgba(27, 60, 107, 0.4),
+              0 4px 16px rgba(27, 60, 107, 0.2),
+              inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
             outline: none !important;
             user-select: none !important;
+            backdrop-filter: blur(10px) !important;
+            position: relative !important;
+            overflow: hidden !important;
+          }
+          
+          #vapi-chat-button::before {
+            content: '' !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            background: linear-gradient(145deg, rgba(255,255,255,0.1), transparent) !important;
+            border-radius: inherit !important;
+            pointer-events: none !important;
           }
 
           #vapi-chat-button:hover {
-            transform: scale(1.05) !important;
-            box-shadow: 0 6px 20px rgba(27, 60, 107, 0.4) !important;
+            transform: scale(1.1) translateY(-4px) !important;
+            box-shadow: 
+              0 16px 48px rgba(27, 60, 107, 0.5),
+              0 8px 24px rgba(27, 60, 107, 0.3),
+              inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+            background: linear-gradient(145deg, #2a4d7c, #1b3c6b) !important;
+          }
+          
+          #vapi-chat-button:active {
+            transform: scale(1.05) translateY(-2px) !important;
+            transition: all 0.1s ease !important;
           }
 
           #vapi-chat-panel {
             position: absolute !important;
-            bottom: 70px !important;
+            bottom: 85px !important;
             right: 0 !important;
-            width: 350px !important;
-            height: 500px !important;
-            background: white !important;
-            border-radius: 12px !important;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
-            border: 1px solid #e5e7eb !important;
+            width: 380px !important;
+            height: 550px !important;
+            background: linear-gradient(145deg, #ffffff, #f8fafc) !important;
+            border-radius: 24px !important;
+            box-shadow: 
+              0 24px 64px rgba(0, 0, 0, 0.15),
+              0 12px 32px rgba(0, 0, 0, 0.1),
+              0 0 0 1px rgba(255, 255, 255, 0.8),
+              inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+            border: 2px solid rgba(27, 60, 107, 0.1) !important;
             display: none !important;
             flex-direction: column !important;
             overflow: hidden !important;
             font-family: inherit !important;
+            backdrop-filter: blur(20px) !important;
           }
 
           #vapi-chat-panel.open {
             display: flex !important;
-            animation: slideUp 0.3s ease-out !important;
+            animation: slideUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
           }
 
           @keyframes slideUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { 
+              opacity: 0; 
+              transform: translateY(30px) scale(0.95); 
+              filter: blur(10px);
+            }
+            to { 
+              opacity: 1; 
+              transform: translateY(0) scale(1);
+              filter: blur(0px);
+            }
           }
 
           #vapi-chat-header {
-            background: var(--vapi-primary-color) !important;
+            background: linear-gradient(135deg, var(--vapi-primary-color), #2a4d7c) !important;
             color: var(--vapi-accent-color) !important;
-            padding: 16px !important;
+            padding: 20px 24px !important;
             display: flex !important;
             justify-content: space-between !important;
             align-items: center !important;
-            border-radius: 12px 12px 0 0 !important;
+            border-radius: 24px 24px 0 0 !important;
+            position: relative !important;
+            box-shadow: 
+              0 4px 16px rgba(27, 60, 107, 0.2),
+              inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+          }
+          
+          #vapi-chat-header::after {
+            content: '' !important;
+            position: absolute !important;
+            bottom: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            height: 1px !important;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent) !important;
           }
 
           #vapi-chat-title {
-            font-weight: 600 !important;
-            font-size: 16px !important;
+            font-weight: 700 !important;
+            font-size: 18px !important;
             margin: 0 !important;
+            letter-spacing: -0.025em !important;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
           }
 
           #vapi-close-button {
@@ -247,10 +306,11 @@
           /* Separate Message Containers */
           #vapi-text-messages, #vapi-voice-messages {
             flex: 1 !important;
-            padding: 16px !important;
+            padding: 24px !important;
             overflow-y: auto !important;
-            background: #f9fafb !important;
+            background: linear-gradient(to bottom, #f8fafc, #f1f5f9) !important;
             scrollbar-width: thin !important;
+            scrollbar-color: rgba(27, 60, 107, 0.3) rgba(241, 245, 249, 0.5) !important;
             display: none !important;
           }
 
@@ -259,27 +319,37 @@
           .vapi-voice-mode #vapi-voice-messages { display: block !important; }
 
           .vapi-message {
-            padding: 12px !important;
-            border-radius: 8px !important;
-            margin-bottom: 12px !important;
-            max-width: 90% !important;
+            padding: 16px 20px !important;
+            border-radius: 16px !important;
+            margin-bottom: 16px !important;
+            max-width: 85% !important;
             word-wrap: break-word !important;
             font-size: 14px !important;
-            line-height: 1.4 !important;
+            line-height: 1.5 !important;
+            position: relative !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
           }
 
           .vapi-message-user {
-            background: var(--vapi-primary-color) !important;
+            background: linear-gradient(135deg, var(--vapi-primary-color), #2a4d7c) !important;
             color: var(--vapi-accent-color) !important;
-            margin-left: 40px !important;
-            border-radius: 18px 18px 4px 18px !important;
+            margin-left: 15% !important;
+            border-radius: 20px 20px 8px 20px !important;
+            box-shadow: 
+              0 4px 16px rgba(27, 60, 107, 0.25),
+              inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+            font-weight: 500 !important;
           }
 
           .vapi-message-assistant {
-            background: white !important;
-            color: #374151 !important;
-            border-left: 3px solid var(--vapi-primary-color) !important;
-            border-radius: 18px 18px 18px 4px !important;
+            background: linear-gradient(135deg, #ffffff, #f8fafc) !important;
+            color: #1e293b !important;
+            border-left: 4px solid var(--vapi-primary-color) !important;
+            border-radius: 20px 20px 20px 8px !important;
+            box-shadow: 
+              0 4px 16px rgba(0, 0, 0, 0.08),
+              0 0 0 1px rgba(27, 60, 107, 0.1) !important;
+            font-weight: 500 !important;
           }
 
           .vapi-message-system {
@@ -330,10 +400,11 @@
           }
 
           #vapi-input-area {
-            padding: 16px !important;
-            border-top: 1px solid #e5e7eb !important;
-            background: white !important;
-            border-radius: 0 0 12px 12px !important;
+            padding: 24px !important;
+            border-top: 1px solid rgba(27, 60, 107, 0.1) !important;
+            background: linear-gradient(to top, #ffffff, #f8fafc) !important;
+            border-radius: 0 0 24px 24px !important;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
           }
 
           #vapi-mode-toggle {
@@ -392,20 +463,29 @@
           }
 
           #vapi-send-button {
-            background: var(--vapi-primary-color) !important;
+            background: linear-gradient(135deg, var(--vapi-primary-color), #2a4d7c) !important;
             color: var(--vapi-accent-color) !important;
             border: none !important;
-            padding: 8px 16px !important;
-            border-radius: 6px !important;
+            padding: 12px 24px !important;
+            border-radius: 12px !important;
             cursor: pointer !important;
-            font-weight: 500 !important;
+            font-weight: 600 !important;
             font-size: 14px !important;
-            transition: all 0.2s ease !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
             outline: none !important;
+            box-shadow: 
+              0 4px 16px rgba(27, 60, 107, 0.3),
+              inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.5px !important;
           }
 
           #vapi-send-button:hover {
-            filter: brightness(1.1) !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 
+              0 8px 24px rgba(27, 60, 107, 0.4),
+              inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+            background: linear-gradient(135deg, #2a4d7c, var(--vapi-primary-color)) !important;
           }
 
           #vapi-send-button:disabled {
